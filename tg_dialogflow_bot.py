@@ -5,6 +5,7 @@ from telegram import Update, ForceReply
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, \
     CallbackContext
 
+from error_handler import error_handler
 from helper import detect_intent_texts
 
 logging.basicConfig(
@@ -58,4 +59,7 @@ def main() -> None:
 if __name__ == '__main__':
     tg_token = env.str('TELEGRAM_TOKEN')
     project_id = env.str('PROJECT_ID')
-    main()
+    try:
+        main()
+    except Exception as e:
+        error_handler(e)

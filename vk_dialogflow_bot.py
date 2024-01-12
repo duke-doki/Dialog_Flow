@@ -4,6 +4,7 @@ import vk_api as vk
 from environs import Env
 from vk_api.longpoll import VkLongPoll, VkEventType
 
+from error_handler import error_handler
 from helper import detect_intent_texts
 
 env = Env()
@@ -40,4 +41,7 @@ def main():
 if __name__ == "__main__":
     vk_token = env.str('VK_TOKEN')
     project_id = env.str('PROJECT_ID')
-    main()
+    try:
+        main()
+    except Exception as e:
+        error_handler(e)

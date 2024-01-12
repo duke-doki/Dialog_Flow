@@ -18,6 +18,7 @@ pip install -r requirements.txt
 - TELEGRAM_TOKEN
 - VK_TOKEN
 - PROJECT_ID
+- MASTER_ID
 
 1. Put `.env` file near `main.py`.
 2. `.env` contains text data without quotes.
@@ -29,6 +30,7 @@ $ cat .env
 TELEGRAM_TOKEN=684537...
 PROJECT_ID=tg-bot...
 VK_TOKEN=vk1.a.sF...
+MASTER_ID=42...
 ```
 
 #### How to get
@@ -38,6 +40,8 @@ VK_TOKEN=vk1.a.sF...
 - Create a VK group and get its token [here](https://vk.com/club224221946?act=tokens).
 
 - Follow the instructions to create your project [here](https://cloud.google.com/dialogflow/es/docs/quick/setup).
+
+- Get your chat id [here](https://t.me/userinfobot).
 
 
 ### create_intent
