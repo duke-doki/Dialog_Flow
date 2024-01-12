@@ -15,13 +15,17 @@ def dialog_flow(event, vk_api):
         project_id,
         event.user_id,
         event.text,
-        'ru-RU'
+        'ru-RU',
+        'vk'
     )
-    vk_api.messages.send(
-        user_id=event.user_id,
-        message=answer,
-        random_id=random.randint(1,1000)
-    )
+    if answer:
+        vk_api.messages.send(
+            user_id=event.user_id,
+            message=answer,
+            random_id=random.randint(1,1000)
+        )
+    else:
+        pass
 
 
 def main():

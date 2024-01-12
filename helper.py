@@ -1,7 +1,7 @@
 from google.cloud import dialogflow
 
 
-def detect_intent_texts(project_id, session_id, texts, language_code):
+def detect_intent_texts(project_id, session_id, texts, language_code, sm='tg'):
     session_client = dialogflow.SessionsClient()
     session = session_client.session_path(project_id, session_id)
     print("Session path: {}\n".format(session))
@@ -27,5 +27,10 @@ def detect_intent_texts(project_id, session_id, texts, language_code):
             )
         )
         print("Fulfillment text: {}\n".format(response.query_result.fulfillment_text))
-
-        return response.query_result.fulfillment_text
+        if sm == 'vk':
+            if response.query_result.intent.is_fallback:
+                return
+            else:
+                return response.query_result.fulfillment_text
+        else:
+            return response.query_result.fulfillment_text
