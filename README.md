@@ -39,6 +39,15 @@ VK_TOKEN=vk1.a.sF...
 
 - Follow the instructions to create your project [here](https://cloud.google.com/dialogflow/es/docs/quick/setup).
 
+
+### create_intent
+
+To create more intents, run:
+```bash
+python create_intent.py [json_file]
+```
+The file must look like the provided `questions.json`.
+
 ### Run
 
 Launch on Linux(Python 3) or Windows:
