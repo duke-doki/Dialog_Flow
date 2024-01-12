@@ -1,6 +1,16 @@
 # DialogFlow bot
 
-A bot that responds to your messages in tg and vk.
+A bot that responds to your messages in tg and vk using the Dialog Flow API.
+
+Dialogflow is a natural language processing (NLP) platform that allows 
+developers to build conversational interfaces for websites, 
+mobile applications, messaging platforms, and IoT devices. 
+It was originally developed by Google and was previously known as API.
+AI before it was rebranded as Dialogflow in 2017.
+
+An example of tg bot - https://t.me/dialogus_flow_bot.
+
+An example of vk bot - https://vk.com/club224221946.
 
 ## Environment
 
