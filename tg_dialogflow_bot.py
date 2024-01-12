@@ -57,7 +57,5 @@ def main() -> None:
 
 if __name__ == '__main__':
     tg_token = env.str('TELEGRAM_TOKEN')
-    google_token = env.str('GOOGLE_TOKEN')
-    google_credentials = env.str('GOOGLE_APPLICATION_CREDENTIALS')
     project_id = env.str('PROJECT_ID')
     main()
