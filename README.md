@@ -19,6 +19,7 @@ pip install -r requirements.txt
 - VK_TOKEN
 - PROJECT_ID
 - MASTER_ID
+- GOOGLE_APPLICATION_CREDENTIALS
 
 1. Put `.env` file near `main.py`.
 2. `.env` contains text data without quotes.
@@ -31,6 +32,7 @@ TELEGRAM_TOKEN=684537...
 PROJECT_ID=tg-bot...
 VK_TOKEN=vk1.a.sF...
 MASTER_ID=42...
+GOOGLE_APPLICATION_CREDENTIALS=/home/...
 ```
 
 #### How to get
@@ -42,6 +44,8 @@ MASTER_ID=42...
 - Follow the instructions to create your project [here](https://cloud.google.com/dialogflow/es/docs/quick/setup).
 
 - Get your chat id [here](https://t.me/userinfobot).
+
+- Set the path to your `credentials.json` created by following the instruction.
 
 
 ### create_intent
