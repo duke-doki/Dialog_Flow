@@ -1,6 +1,7 @@
 import argparse
 import json
 
+from environs import Env
 from google.cloud import dialogflow
 
 
@@ -29,6 +30,9 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
 
 
 if __name__ == '__main__':
+    env = Env()
+    env.read_env()
+    project_id = env.str('PROJECT_ID')
     parser = argparse.ArgumentParser(
         description='This script adds more intents to the Agent'
     )
@@ -39,7 +43,7 @@ if __name__ == '__main__':
     questions = json.loads(questions_json)
     for intent, options in questions.items():
         create_intent(
-            'tg-bot-lesson-3',
+            project_id,
             intent,
             options['questions'],
             [options['answer']]
