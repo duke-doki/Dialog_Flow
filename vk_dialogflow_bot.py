@@ -21,8 +21,6 @@ def dialog_flow(event, vk_api):
             message=answer,
             random_id=random.randint(1, 1000)
         )
-    else:
-        pass
 
 
 if __name__ == "__main__":
