@@ -5,7 +5,7 @@ from environs import Env
 from vk_api.longpoll import VkLongPoll, VkEventType
 
 from error_handler import error_handler
-from helper import detect_intent_texts
+from detect_intent import detect_intent_texts
 
 
 def dialog_flow(event, vk_api):
