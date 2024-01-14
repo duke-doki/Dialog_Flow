@@ -19,19 +19,10 @@ def dialog_flow(event, vk_api):
         vk_api.messages.send(
             user_id=event.user_id,
             message=answer,
-            random_id=random.randint(1,1000)
+            random_id=random.randint(1, 1000)
         )
     else:
         pass
-
-
-def main():
-    vk_session = vk.VkApi(token=vk_token)
-    vk_api = vk_session.get_api()
-    longpoll = VkLongPoll(vk_session)
-    for event in longpoll.listen():
-        if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-            dialog_flow(event, vk_api)
 
 
 if __name__ == "__main__":
@@ -42,6 +33,11 @@ if __name__ == "__main__":
     master_id = env.str('MASTER_ID')
     project_id = env.str('PROJECT_ID')
     try:
-        main()
+        vk_session = vk.VkApi(token=vk_token)
+        vk_api = vk_session.get_api()
+        longpoll = VkLongPoll(vk_session)
+        for event in longpoll.listen():
+            if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+                dialog_flow(event, vk_api)
     except Exception as e:
         error_handler(e, tg_token, master_id)

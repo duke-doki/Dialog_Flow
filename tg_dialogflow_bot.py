@@ -35,21 +35,6 @@ def dialog_flow(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(answer)
 
 
-def main() -> None:
-    updater = Updater(tg_token)
-    dispatcher = updater.dispatcher
-
-    dispatcher.add_handler(CommandHandler("start", start))
-
-    dispatcher.add_handler(CommandHandler("help", help_command))
-
-    dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, dialog_flow))
-
-    updater.start_polling()
-
-    updater.idle()
-
-
 if __name__ == '__main__':
     logging.basicConfig(
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -61,6 +46,18 @@ if __name__ == '__main__':
     project_id = env.str('PROJECT_ID')
     master_id = env.str('MASTER_ID')
     try:
-        main()
+        updater = Updater(tg_token)
+        dispatcher = updater.dispatcher
+
+        dispatcher.add_handler(CommandHandler("start", start))
+
+        dispatcher.add_handler(CommandHandler("help", help_command))
+
+        dispatcher.add_handler(
+            MessageHandler(Filters.text & ~Filters.command, dialog_flow))
+
+        updater.start_polling()
+
+        updater.idle()
     except Exception as e:
         error_handler(e, tg_token, master_id)
