@@ -58,7 +58,8 @@ if __name__ == '__main__':
     env.read_env()
     tg_token = env.str('TELEGRAM_TOKEN')
     project_id = env.str('PROJECT_ID')
+    master_id = env.str('MASTER_ID')
     try:
         main()
     except Exception as e:
-        error_handler(e)
+        error_handler(e, tg_token, master_id)

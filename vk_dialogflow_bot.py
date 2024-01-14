@@ -39,8 +39,10 @@ if __name__ == "__main__":
     env = Env()
     env.read_env()
     vk_token = env.str('VK_TOKEN')
+    tg_token = env.str('TELEGRAM_TOKEN')
+    master_id = env.str('MASTER_ID')
     project_id = env.str('PROJECT_ID')
     try:
         main()
     except Exception as e:
-        error_handler(e)
+        error_handler(e, tg_token, master_id)
