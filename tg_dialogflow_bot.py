@@ -8,9 +8,6 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, \
 from error_handler import error_handler
 from detect_intent import detect_intent_texts
 
-logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
-)
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +51,10 @@ def main() -> None:
 
 
 if __name__ == '__main__':
+    logging.basicConfig(
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        level=logging.INFO
+    )
     env = Env()
     env.read_env()
     tg_token = env.str('TELEGRAM_TOKEN')
