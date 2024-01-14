@@ -20,10 +20,6 @@ def start(update: Update, context: CallbackContext) -> None:
     )
 
 
-def help_command(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('Help!')
-
-
 def response(update: Update, context: CallbackContext) -> None:
     chat_id = update.effective_chat.id
     answer, is_fallback = detect_intent_texts(
@@ -50,8 +46,6 @@ if __name__ == '__main__':
         dispatcher = updater.dispatcher
 
         dispatcher.add_handler(CommandHandler("start", start))
-
-        dispatcher.add_handler(CommandHandler("help", help_command))
 
         dispatcher.add_handler(
             MessageHandler(Filters.text & ~Filters.command, response))
