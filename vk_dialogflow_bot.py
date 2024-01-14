@@ -8,7 +8,7 @@ from error_handler import error_handler
 from detect_intent import detect_intent_texts
 
 
-def dialog_flow(event, vk_api):
+def response(event, vk_api):
     answer, is_fallback = detect_intent_texts(
         project_id,
         event.user_id,
@@ -36,6 +36,6 @@ if __name__ == "__main__":
         longpoll = VkLongPoll(vk_session)
         for event in longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-                dialog_flow(event, vk_api)
+                response(event, vk_api)
     except Exception as e:
         error_handler(e, tg_token, master_id)

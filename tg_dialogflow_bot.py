@@ -24,7 +24,7 @@ def help_command(update: Update, context: CallbackContext) -> None:
     update.message.reply_text('Help!')
 
 
-def dialog_flow(update: Update, context: CallbackContext) -> None:
+def response(update: Update, context: CallbackContext) -> None:
     chat_id = update.effective_chat.id
     answer, is_fallback = detect_intent_texts(
         project_id,
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         dispatcher.add_handler(CommandHandler("help", help_command))
 
         dispatcher.add_handler(
-            MessageHandler(Filters.text & ~Filters.command, dialog_flow))
+            MessageHandler(Filters.text & ~Filters.command, response))
 
         updater.start_polling()
 
