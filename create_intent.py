@@ -37,10 +37,10 @@ if __name__ == '__main__':
     with open(args.json_file, 'r') as file:
         questions_json = file.read()
     questions = json.loads(questions_json)
-    for key, value in questions.items():
+    for intent, options in questions.items():
         create_intent(
             'tg-bot-lesson-3',
-            key,
-            value['questions'],
-            [value['answer']]
+            intent,
+            options['questions'],
+            [options['answer']]
         )
