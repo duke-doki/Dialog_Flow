@@ -7,9 +7,6 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 from error_handler import error_handler
 from helper import detect_intent_texts
 
-env = Env()
-env.read_env()
-
 
 def dialog_flow(event, vk_api):
     answer = detect_intent_texts(
@@ -39,6 +36,8 @@ def main():
 
 
 if __name__ == "__main__":
+    env = Env()
+    env.read_env()
     vk_token = env.str('VK_TOKEN')
     project_id = env.str('PROJECT_ID')
     try:

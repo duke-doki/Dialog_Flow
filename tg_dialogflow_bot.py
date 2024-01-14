@@ -14,9 +14,6 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-env = Env()
-env.read_env()
-
 
 def start(update: Update, context: CallbackContext) -> None:
     user = update.effective_user
@@ -57,6 +54,8 @@ def main() -> None:
 
 
 if __name__ == '__main__':
+    env = Env()
+    env.read_env()
     tg_token = env.str('TELEGRAM_TOKEN')
     project_id = env.str('PROJECT_ID')
     try:
