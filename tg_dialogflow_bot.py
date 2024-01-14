@@ -29,7 +29,7 @@ def help_command(update: Update, context: CallbackContext) -> None:
 
 def dialog_flow(update: Update, context: CallbackContext) -> None:
     chat_id = update.effective_chat.id
-    answer = detect_intent_texts(
+    answer, is_fallback = detect_intent_texts(
         project_id,
         chat_id,
         update.message.text,
