@@ -20,9 +20,8 @@ def start(update: Update, context: CallbackContext) -> None:
     )
 
 
-def response(update: Update, context: CallbackContext) -> None:
+def response(update: Update, context: CallbackContext, project_id) -> None:
     chat_id = update.effective_chat.id
-    project_id = env.str('PROJECT_ID')
     answer, is_fallback = detect_intent_texts(
         project_id,
         chat_id,
@@ -41,6 +40,7 @@ if __name__ == '__main__':
     env.read_env()
     tg_token = env.str('TELEGRAM_TOKEN')
     master_id = env.str('MASTER_ID')
+    project_id = env.str('PROJECT_ID')
     try:
         updater = Updater(tg_token)
         dispatcher = updater.dispatcher
@@ -48,7 +48,11 @@ if __name__ == '__main__':
         dispatcher.add_handler(CommandHandler("start", start))
 
         dispatcher.add_handler(
-            MessageHandler(Filters.text & ~Filters.command, response))
+            MessageHandler(
+                Filters.text & ~Filters.command,
+                lambda update, context: response(update, context, project_id)
+            )
+        )
 
         updater.start_polling()
 
