@@ -22,6 +22,7 @@ def start(update: Update, context: CallbackContext) -> None:
 
 def response(update: Update, context: CallbackContext) -> None:
     chat_id = update.effective_chat.id
+    project_id = env.str('PROJECT_ID')
     answer, is_fallback = detect_intent_texts(
         project_id,
         chat_id,
@@ -39,7 +40,6 @@ if __name__ == '__main__':
     env = Env()
     env.read_env()
     tg_token = env.str('TELEGRAM_TOKEN')
-    project_id = env.str('PROJECT_ID')
     master_id = env.str('MASTER_ID')
     try:
         updater = Updater(tg_token)

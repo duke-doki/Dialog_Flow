@@ -9,6 +9,7 @@ from detect_intent import detect_intent_texts
 
 
 def response(event, vk_api):
+    project_id = env.str('PROJECT_ID')
     answer, is_fallback = detect_intent_texts(
         project_id,
         event.user_id,
@@ -29,7 +30,6 @@ if __name__ == "__main__":
     vk_token = env.str('VK_TOKEN')
     tg_token = env.str('TELEGRAM_TOKEN')
     master_id = env.str('MASTER_ID')
-    project_id = env.str('PROJECT_ID')
     try:
         vk_session = vk.VkApi(token=vk_token)
         vk_api = vk_session.get_api()
